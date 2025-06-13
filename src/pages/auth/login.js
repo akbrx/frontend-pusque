@@ -53,7 +53,7 @@ export function renderLoginForm(onLoginSuccess) {
     messageDiv.textContent = '';
     messageDiv.classList.remove('text-success', 'text-danger');
 
-    fetch('https://backend-production-2169.up.railway.app/login', {
+    fetch('http://localhost:5000/login', {
       method: 'POST',
       credentials: 'include',
       headers: {

@@ -24,7 +24,7 @@ class DaftarAntrianForm extends HTMLElement {
 
       // Kirim ke backend
       try {
-        const res = await fetch('https://backend-pusque-production.up.railway.app/antrian', {
+        const res = await fetch('http://localhost:5000/antrian', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

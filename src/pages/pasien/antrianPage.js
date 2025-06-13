@@ -11,8 +11,8 @@ class AntrianPuskesmas extends HTMLElement {
   async connectedCallback() {
     try {
       const [resUser, resAll] = await Promise.all([
-        fetch('https://backend-pusque-production.up.railway.app/antrian/user', { credentials: 'include' }),
-        fetch('https://backend-pusque-production.up.railway.app/antrian', { credentials: 'include' })
+        fetch('http://localhost:5000/antrian/user', { credentials: 'include' }),
+        fetch('http://localhost:5000/antrian', { credentials: 'include' })
       ]);
       this._antrian = await resUser.json();
       this._semuaAntrian = await resAll.json();

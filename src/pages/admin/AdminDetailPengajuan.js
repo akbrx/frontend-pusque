@@ -15,7 +15,7 @@ class AdminDetailPengajuan extends HTMLElement {
     console.log("ID dari URL:", id);
     try {
       // Ambil semua antrian
-      const resAll = await fetch('https://backend-pusque-production.up.railway.app/antrian', {
+      const resAll = await fetch('http://localhost:5000/antrian', {
         credentials: 'include'
       });
       const allData = await resAll.json();
@@ -30,7 +30,7 @@ class AdminDetailPengajuan extends HTMLElement {
       const idx = aktifData.findIndex(a => a.id == id);
 
       // Ambil detail antrian yang sedang dibuka
-      const res = await fetch(`https://backend-pusque-production.up.railway.app/antrian/${id}`, {
+      const res = await fetch(`http://localhost:5000/antrian/${id}`, {
         credentials: 'include'
       });
       if (!res.ok) throw new Error('Gagal mengambil detail antrian');
@@ -58,7 +58,7 @@ class AdminDetailPengajuan extends HTMLElement {
     }
 
     const fotoKtpSrc = this._pasien.fotoKtp
-      ? `https://backend-pusque-production.up.railway.app/uploads/ktp/${this._pasien.fotoKtp}`
+      ? `http://localhost:5000/uploads/ktp/${this._pasien.fotoKtp}`
       : ktpimg;
 
     this.innerHTML = `
@@ -129,7 +129,7 @@ class AdminDetailPengajuan extends HTMLElement {
     if (!confirm('Yakin ingin menolak antrian ini?')) return;
     try {
       const id = window.location.hash.split('/')[2];
-      const res = await fetch(`https://backend-pusque-production.up.railway.app/antrian/${id}/tolak`, {
+      const res = await fetch(`http://localhost:5000/antrian/${id}/tolak`, {
         method: 'PATCH',
         credentials: 'include'
       });
@@ -151,7 +151,7 @@ class AdminDetailPengajuan extends HTMLElement {
       const id = window.location.hash.split('/')[2];
   
       // 🔍 Ambil data detail antrian dulu
-      const resDetail = await fetch(`https://backend-pusque-production.up.railway.app/antrian/${id}`, {
+      const resDetail = await fetch(`http://localhost:5000/antrian/${id}`, {
         credentials: 'include'
       });
       const antrianData = await resDetail.json();
@@ -169,7 +169,7 @@ class AdminDetailPengajuan extends HTMLElement {
         this.predictedDuration = prediction.durationMinutes;
   
         // PATCH hasil prediksi ke backend
-        await fetch(`https://backend-pusque-production.up.railway.app/antrian/${id}/prediksi`, {
+        await fetch(`http://localhost:5000/antrian/${id}/prediksi`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json'
@@ -183,7 +183,7 @@ class AdminDetailPengajuan extends HTMLElement {
       }
   
       // ✅ Kirim permintaan ACC
-      const res = await fetch(`https://backend-pusque-production.up.railway.app/antrian/${id}/acc`, {
+      const res = await fetch(`http://localhost:5000/antrian/${id}/acc`, {
         method: 'PATCH',
         credentials: 'include'
       });

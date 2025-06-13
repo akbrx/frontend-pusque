@@ -11,7 +11,7 @@ class AdminPengajuanList extends HTMLElement {
   
     async fetchAntrian() {
       try {
-        const res = await fetch('https://backend-pusque-production.up.railway.app/antrian', {
+        const res = await fetch('http://localhost:5000/antrian', {
           credentials: 'include'
         });
         if (!res.ok) throw new Error('Gagal mengambil data antrian');
@@ -131,7 +131,7 @@ class AdminPengajuanList extends HTMLElement {
           const id = btn.getAttribute('data-id');
           if (confirm('Yakin ingin menghapus antrian ini?')) {
             try {
-              const res = await fetch(`https://backend-pusque-production.up.railway.app/antrian/${id}`, {
+              const res = await fetch(`http://localhost:5000/antrian/${id}`, {
                 method: 'DELETE',
                 credentials: 'include'
               });
@@ -156,7 +156,7 @@ class AdminPengajuanList extends HTMLElement {
           const id = btn.getAttribute('data-id');
           if (confirm('Kembalikan antrian ini ke status "menunggu acc admin"?')) {
             try {
-              const res = await fetch(`https://backend-pusque-production.up.railway.app/antrian/${id}/kembalikan`, {
+              const res = await fetch(`http://localhost:5000/antrian/${id}/kembalikan`, {
                 method: 'PATCH',
                 credentials: 'include'
               });

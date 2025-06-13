@@ -9,7 +9,7 @@ class ProfileView extends HTMLElement {
     // Fetch data user yang sedang login
     let user = {};
     try {
-      const res = await fetch('https://backend-pusque-production.up.railway.app/user/me', { credentials: 'include' });
+      const res = await fetch('http://localhost:5000/user/me', { credentials: 'include' });
       if (!res.ok) throw new Error('Gagal mengambil data user');
       user = await res.json();
     } catch (err) {

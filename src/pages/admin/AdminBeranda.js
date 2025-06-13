@@ -3,7 +3,7 @@ class AdminBeranda extends HTMLElement {
     this.innerHTML = `<div>Loading statistik...</div>`;
     let pasienPerBulan = [];
     try {
-      const res = await fetch('https://backend-pusque-production.up.railway.app/statistik/pasien-per-bulan', { credentials: 'include' });
+      const res = await fetch('http://localhost:5000/statistik/pasien-per-bulan', { credentials: 'include' });
       pasienPerBulan = await res.json();
     } catch (err) {
       this.innerHTML = `<div style="color:red;">Gagal memuat data statistik.</div>`;

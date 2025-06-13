@@ -101,7 +101,7 @@ class DetailPasienView extends HTMLElement {
       this.querySelector('#btn-turunkan')?.addEventListener('click', async () => {
         if (!confirm('Yakin ingin menurunkan antrian pasien ini satu tingkat ke bawah?')) return;
         try {
-          const res = await fetch(`https://backend-pusque-production.up.railway.app/antrian/${this._pasien.id}/mundur`, {
+          const res = await fetch(`http://localhost:5000/antrian/${this._pasien.id}/mundur`, {
             method: 'PATCH',
             credentials: 'include'
           });
@@ -121,7 +121,7 @@ class DetailPasienView extends HTMLElement {
         e.preventDefault();
         if (!confirm('Tandai antrian ini sebagai selesai?')) return;
         try {
-          const res = await fetch(`https://backend-pusque-production.up.railway.app/antrian/${this._pasien.id}/selesai`, {
+          const res = await fetch(`http://localhost:5000/antrian/${this._pasien.id}/selesai`, {
             method: 'PATCH',
             credentials: 'include'
           });
