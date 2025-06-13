@@ -104,7 +104,7 @@ export function renderRegisterForm(onRegisterSuccess) {
     //     registerData.append('confPassword', confPassword);
     //     registerData.append('fotoKtp', document.getElementById('fotoKtp').files[0]);
 
-    //     const registerRes = await fetch('http://localhost:5000/users', {
+    //     const registerRes = await fetch('https://backend-pusque-production.up.railway.app/users', {
     //       method: 'POST',
     //       body: registerData
     //     });
@@ -149,7 +149,7 @@ export function renderRegisterForm(onRegisterSuccess) {
       registerData.append('confPassword', confPassword);
       registerData.append('fotoKtp', document.getElementById('fotoKtp').files[0]);
     
-      const registerRes = await fetch('http://localhost:5000/users', {
+      const registerRes = await fetch('https://backend-pusque-production.up.railway.app/users', {
         method: 'POST',
         body: registerData
       });

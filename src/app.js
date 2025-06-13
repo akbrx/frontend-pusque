@@ -82,7 +82,7 @@ function router() {
   else if (hash === "#/dokter" && role === "dokter") {
     const listView = document.createElement("pasien-list-view");
     // Fetch data dari backend
-    fetch('http://localhost:5000/antrian', { credentials: 'include' })
+    fetch('https://backend-pusque-production.up.railway.app/antrian', { credentials: 'include' })
       .then(res => res.json())
       .then(data => {
         listView.dataPasien = data;
@@ -97,7 +97,7 @@ function router() {
   else if (hash === "#/pengajuan" && role === "admin") {
     const adminList = document.createElement("admin-pengajuan-list");
     // Fetch data dari backend
-    fetch('http://localhost:5000/antrian', { credentials: 'include' })
+    fetch('https://backend-pusque-production.up.railway.app/antrian', { credentials: 'include' })
       .then(res => res.json())
       .then(data => {
         adminList.dataPasien = data;
@@ -118,7 +118,7 @@ function router() {
     const id = parseInt(hash.split('/')[2]);
     const detailView = document.createElement("detail-pasien-view");
     // Fetch detail pasien dari backend
-    fetch(`http://localhost:5000/antrian/${id}`, { credentials: 'include' })
+    fetch(`https://backend-pusque-production.up.railway.app/antrian/${id}`, { credentials: 'include' })
       .then(res => {
         if (!res.ok) throw new Error('Pasien tidak ditemukan');
         return res.json();

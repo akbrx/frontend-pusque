@@ -53,7 +53,7 @@ export function renderLoginForm(onLoginSuccess) {
     messageDiv.textContent = '';
     messageDiv.classList.remove('text-success', 'text-danger');
 
-    fetch('http://localhost:5000/login', {
+    fetch('https://backend-pusque-production.up.railway.app/login', {
       method: 'POST',
       credentials: 'include',
       headers: {

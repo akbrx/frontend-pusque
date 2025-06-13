@@ -5,10 +5,10 @@ class FeedbackPage extends HTMLElement {
     let feedbacks = [];
     try {
       // Ambil riwayat antrian selesai user
-      const res = await fetch('http://localhost:5000/antrian/riwayat', { credentials: 'include' });
+      const res = await fetch('https://backend-pusque-production.up.railway.app/antrian/riwayat', { credentials: 'include' });
       riwayat = await res.json();
       // Ambil feedback yang sudah pernah diberikan user
-      const resFb = await fetch('http://localhost:5000/feedback/user', { credentials: 'include' });
+      const resFb = await fetch('https://backend-pusque-production.up.railway.app/feedback/user', { credentials: 'include' });
       feedbacks = await resFb.json();
     } catch (err) {
       this.innerHTML = `<div class="text-danger">Gagal mengambil data riwayat/feedback.</div>`;
@@ -182,7 +182,7 @@ class FeedbackPage extends HTMLElement {
           return;
         }
         try {
-          const res = await fetch('http://localhost:5000/feedback', {
+          const res = await fetch('https://backend-pusque-production.up.railway.app/feedback', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
