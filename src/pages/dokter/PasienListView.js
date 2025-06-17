@@ -122,7 +122,7 @@ class PasienListView extends HTMLElement {
         if (!confirm('Tandai antrian ini sebagai selesai?')) return;
         const id = btn.getAttribute('data-id');
         try {
-          const res = await fetch(`https://serverpusque-production.up.railway.app/antrian/${id}/selesai`, {
+          const res = await fetch(`https://backend-pusque-production.up.railway.app/antrian/${id}/selesai`, {
             method: 'PATCH',
             credentials: 'include'
           });
