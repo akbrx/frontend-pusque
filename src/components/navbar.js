@@ -22,7 +22,7 @@ class MyNavbar extends HTMLElement {
       if (role === 'pasien') {
         menuItems += `
           <li><a href="#/antrian">Antrian</a></li>
-          <li><a href="#/daftar-antrian">Daftar Antrian</a></li>
+          <li><a href="#/daftar">Daftar Antrian</a></li>
           <li><a href="#/feedback">Feedback</a></li>
         `;
       } else if (role === 'admin') {
