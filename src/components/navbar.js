@@ -36,7 +36,7 @@ class MyNavbar extends HTMLElement {
         `;
       }
       menuItems += `<li><a href="#/profile">Profil</a></li>`;
-      menuItems += `<li><a href="#" id="logoutBtn">Logout</a></li>`;
+      menuItems += `<li><a href="#" class="logout-btn">Logout</a></li>`;
     } else {
       // Menu untuk user yang belum login (tamu)
       menuItems += `
@@ -258,16 +258,15 @@ class MyNavbar extends HTMLElement {
         link.addEventListener('click', closeMenu);
     });
 
-    const logoutBtn = this.shadowRoot.querySelector("#logoutBtn");
-    if (logoutBtn) {
-      logoutBtn.addEventListener("click", (e) => {
+    const logoutBtns = this.shadowRoot.querySelectorAll(".logout-btn");
+    logoutBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
         e.preventDefault();
         localStorage.removeItem("userRole");
         localStorage.removeItem("accessToken");
         window.location.hash = "#/login";
-        // `render()` akan otomatis dipanggil oleh event 'hashchange'
       });
-    }
+    });
   }
 }
 
