@@ -1,3 +1,4 @@
+import { authFetch } from "../../fatchauth.js"; 
 class PasienListView extends HTMLElement {
 
   set dataPasien(value) {
@@ -122,19 +123,25 @@ class PasienListView extends HTMLElement {
         if (!confirm('Tandai antrian ini sebagai selesai?')) return;
         const id = btn.getAttribute('data-id');
         try {
-          const res = await fetch(`https://backend-pusque-production.up.railway.app/antrian/${id}/selesai`, {
-            method: 'PATCH',
-            credentials: 'include'
+          const res = await authFetch(`https://backend-pusque-production.up.railway.app/antrian/${id}/selesai`, {
+            method: 'PATCH'
           });
           if (res.ok) {
             alert('Antrian berhasil diselesaikan.');
-            window.location.reload();
+            this._allPasien = this._allPasien.filter(p => p.id !== parseInt(id));
+            this.applyFilter();
           } else {
             const data = await res.json().catch(() => ({}));
             alert(data.message || 'Gagal menyelesaikan antrian.');
           }
         } catch (err) {
+          console.error("Error saat menyelesaikan antrian:", err);
           alert('Terjadi error saat menyelesaikan antrian.');
+          if (err.message.includes("Authentikasi diperlukan") || err.message.includes("refresh token")) {
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('userRole');
+            window.location.hash = "#/login";
+          }
         }
       });
     });
