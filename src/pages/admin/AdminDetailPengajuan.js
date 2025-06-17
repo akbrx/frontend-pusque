@@ -181,16 +181,16 @@ class AdminDetailPengajuan extends HTMLElement {
                 console.log("Estimasi Durasi (menit):", prediction.durationMinutes);
         
                 // Simpan ke variabel global (opsional)
-                this.predictedEntry = prediction.entryMinutes;
                 this.predictedDuration = prediction.durationMinutes;
+                this.predictedEntry = prediction.entryMinutes;
         
                 // PATCH hasil prediksi ke backend (gunakan authFetch dan URL backend yang benar)
                 await authFetch(`https://backend-pusque-production.up.railway.app/antrian/${id}/prediksi`, {
                     method: 'PATCH',
                     // authFetch sudah menangani headers['Content-Type'], credentials
                     body: JSON.stringify({
-                        entryMinutes: prediction.entryMinutes,
-                        durationMinutes: prediction.durationMinutes
+                        durationMinutes: prediction.durationMinutes,
+                        entryMinutes: prediction.entryMinutes
                     })
                 });
             }
@@ -316,8 +316,8 @@ class AdminDetailPengajuan extends HTMLElement {
             ]);
         
             return {
-                entryMinutes: resEntry.prediction_minutes,
-                durationMinutes: resDuration.prediction_minutes
+                durationMinutes: resDuration.prediction_minutes,
+                entryMinutes: resEntry.prediction_minutes
             };
         } catch (err) {
             console.error("❌ Error during prediction:", err.message);
